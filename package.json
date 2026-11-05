@@ -1,40 +1,34 @@
 {
-  "name": "academic-pages",
-  "version": "0.8.1.1",
-  "description": "Academic Pages Mistakes Jekyll theme npm build scripts",
+  "name": "stegarena-page",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "StegArena research website for autonomous side-channel communication between isolated agents",
   "repository": {
     "type": "git",
-    "url": "https://github.com/academicpages/academicpages.github.io"
+    "url": "https://github.com/AI4Collaboration/stegarena-page"
   },
   "keywords": [
-    "jekyll",
-    "theme",
-    "minimal"
-  ],
-  "contributors": [
-    "Michael Rose",
-    "Robert Zupko"
+    "stegarena",
+    "research",
+    "agents"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/academicpages/academicpages.github.io/issues"
-  },
-  "homepage": "https://github.com/academicpages/academicpages.github.io",
   "engines": {
-    "node": ">= 0.10.0"
-  },
-  "dependencies": {
-    "jquery": "^3.7.1",
-    "plotly.js-dist-min": "^3.6.0"
+    "node": ">=22"
   },
   "devDependencies": {
-    "jslint": "^0.12.1",
-    "onchange": "^7.1.0",
-    "uglify-js": "^3.19.3"    
+    "@axe-core/playwright": "^4.10.2",
+    "playwright": "1.64.1",
+    "serve": "^14.2.4"
+  },
+  "overrides": {
+    "compression": "^1.8.2"
   },
   "scripts": {
-    "uglify": "uglifyjs assets/js/plugins/jquery.greedy-navigation.js assets/js/_main.js assets/js/theme.js -c -m -o assets/js/main.min.js",
-    "watch:js": "onchange \"assets/js/**/*.js\" -e \"assets/js/main.min.js\" -- npm run build:js",
-    "build:js": "npm run uglify"
+    "dev": "serve . -l tcp://127.0.0.1:4173",
+    "build": "node scripts/build.mjs",
+    "preview": "serve dist -l tcp://127.0.0.1:4173",
+    "test": "playwright test"
   }
 }
